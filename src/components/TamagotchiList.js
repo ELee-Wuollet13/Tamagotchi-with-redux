@@ -4,7 +4,6 @@ import Tamagotchi from './Tamagotchi'
 import { v4 } from 'uuid';
 
 function TamagotchiList(props) {
-  console.log('props in TamagotchiList: ' + props);
   return (
     <div>
       {props.tamagotchiList.map((tamagotchi) =>
@@ -13,6 +12,9 @@ function TamagotchiList(props) {
             sleepiness={tamagotchi.sleepiness}
             boredom={tamagotchi.boredom}
             dead={tamagotchi.dead}
+            currentRouterPath={props.currentRouterPath}
+            onButtonClick={props.onButtonClick}
+            id={tamagotchi.id}
             key={tamagotchi.id}/>
       )}
     </div>
@@ -21,7 +23,9 @@ function TamagotchiList(props) {
 
 
 TamagotchiList.propTypes = {
-  tamagotchiList: PropTypes.array
+  tamagotchiList: PropTypes.array,
+  currentRouterPath: PropTypes.string,
+  onButtonClick: PropTypes.func.isRequired
 };
 
 export default TamagotchiList;

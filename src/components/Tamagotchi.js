@@ -14,24 +14,19 @@ class Tamagotchi extends React.Component {
   }
 
   render(props) {
-    console.log(this.state)
     if (this.props.dead === true) {
       return(<p>Your tamagotchi has died</p>)
-    }else {
-
-
-    return (
-      <div>
-      <img src='' alt='a tamagotchi'></img>
-      <h1>{this.props.name}</h1>
-      <p>{this.props.hunger} | {this.props.sleepiness} | {this.props.boredom}</p>
-      <button type='button'>feed </button> <button type='button'>put to bed </button><button type='button'>play </button>
-       
-      </div>
-    );
+    } else {
+      return (
+        <div>
+        <img src='' alt='a tamagotchi'></img>
+        <h1>{this.props.name}</h1>
+        <p>{this.props.hunger} | {this.props.sleepiness} | {this.props.boredom}</p>
+        <button id='feed' type='button' onClick={()=>this.props.onButtonClick(this.props.id)}>feed </button> <button type='button'>put to bed </button><button type='button'>play </button>
+        </div>
+      );
+    }
   }
-}
-
 }
 
 
@@ -40,7 +35,10 @@ Tamagotchi.propTypes = {
   hunger: PropTypes.number.isRequired,
   sleepiness: PropTypes.number.isRequired,
   boredom: PropTypes.number.isRequired,
-  dead: PropTypes.bool.isRequired
+  dead: PropTypes.bool.isRequired,
+  onButtonClick: PropTypes.func,
+  id: PropTypes.string.isRequired,
+  currentRouterPath: PropTypes.string
 };
 
 export default Tamagotchi;
